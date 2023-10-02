@@ -7,9 +7,7 @@
     <style>
         html {
             height: 100vh;
-            color: blue;
-            background-color: aqua;
-            font-size: 80vmin;
+            font-size: 75vmin;
             text-align: center;
             user-select: none;
         }
@@ -30,4 +28,31 @@
 <body>
     <div>&#x1F404;&#65038;</div>
 </body>
+<script>
+    const palettes = ["222831393e4600adb5eeeeee","e3fdfdcbf1f5a6e3e971c9ce","ffc7c7ffe2e2f6f6f68785a2","f9f7f7dbe2ef3f72af112d4e","f9ed69f08a5db83b5e6a2c70","08d9d6252a34ff2e63eaeaea","f38181fce38aeaffd095e1d3","fff5e4ffe3e1ffd1d1ff9494","f4eeffdcd6f7a6b1e1424874","ad8b73ceab93e3caa5fffbe9","a8d8eaaa96dafcbad3ffffd2","ffb6b9fae3d9bbded661c0bf","1b262c0f4c753282b8bbe1fa","b7c4cfeee3cbd7c0ae967e76","b1b2ffaac4ffd2daffeef1ff","364f6b3fc1c9f5f5f5fc5185","defcf9cadefcc3bef0cca8e9","7d5a50b4846ce5b299fcdec0","fcd1d1ece2e1d3e0dcaee1e1","f8ede3bdd2b6a2b29f798777","ffeddbedcdbbe3b7a0bf9270","f5efe6e8dfcaaebdca7895b2","f67280c06c846c5b7b355c7d","e4f9f530e3ca11999e40514e","fff8ea9e7676815b5b594545","2b2e4ae8454590374953354a","6096b493bfcfbdcdd6eee9da","fcd8d4fdf6f0f8e2cff5c6aa","2121213232320d737714ffec","f7fbfcd6e6f2b9d7ea769fcd","f8ede3dfd3c3d0b8a87d6e83","bad7dfffe2e2f6f6f699ddcc","fdefeff4dfd0dad0c2cdbba7","e23e5788304e522546311d3f","ffe6e6f2d1d1daeaf1c6dce4","fefcf3f5ebe0f0dbdbdba39a","ffd5cdefbbcfc3aed68675a9","2c36393f4e4fa27b5cdcd7c9","93b5c6c9ccd5e4d8dcffe3e3","ffcfdffefdcae0f9b5a5dee5"];
+    let i = Math.floor(Math.random() * palettes.length);
+    const code = palettes[i];
+    const palette = [];
+    for (let j = 0; j < 4; j++) {
+        palette.push('#' + code.substring(j*6, j*6+6));
+    }
+    console.log(palette);
+
+    function shuffle(array) {
+        for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+    }
+
+    function applyPalette(p) {
+        shuffle(p);
+        document.body.style.color = p[0];
+        document.body.style.backgroundColor = p[1];
+    }
+
+    applyPalette(palette);
+
+    document.addEventListener('click', () => applyPalette(palette));
+</script>
 </html>
